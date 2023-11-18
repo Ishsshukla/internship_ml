@@ -1,4 +1,5 @@
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import linear_kernel
@@ -6,6 +7,10 @@ from fastapi import FastAPI
 import requests
 
 app = FastAPI()
+
+# CORS (Cross-Origin Resource Sharing) settings
+origins = ["http://127.0.0.1:8000/", "http://localhost:5173", "https://intrship.onrender.com/", "http://localhost:5000","https://workshala-navy.vercel.app/"]
+app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 
 response = requests.get('https://workshala-7v7q.onrender.com/internshipData')
