@@ -60,7 +60,7 @@ def get_intership(skills):
     
     return recommendations
 
-app = FastAPI()
+
 
 @app.get("/internship/{skills}")
 def recommendation_func(skills : str):
